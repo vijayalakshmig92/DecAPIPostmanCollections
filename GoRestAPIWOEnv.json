@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "65d1c31f-29d5-4245-a143-8f5d2627dc28",
+		"name": "GoRestAPIWOEnv",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46880393",
+		"_collection_link": "https://vijayalakshmig-7835643.postman.co/workspace/Vijayalakshmi-G's-Workspace~3ab3ccc2-da1a-4952-80b2-c0b28efffae6/collection/46880393-65d1c31f-29d5-4245-a143-8f5d2627dc28?action=share&source=collection_link&creator=46880393"
+	},
+	"item": [
+		{
+			"name": "1-GetAllUsers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://gorest.co.in/public/v2/users",
+					"protocol": "http",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1-GetAUserByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://gorest.co.in/public/v2/users/8228874",
+					"protocol": "http",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users",
+						"8228874"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

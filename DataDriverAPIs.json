@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "3875d515-def6-4b25-b83a-d3ebae9dabc5",
+		"name": "DataDriverAPIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46880393",
+		"_collection_link": "https://vijayalakshmig-7835643.postman.co/workspace/Vijayalakshmi-G's-Workspace~3ab3ccc2-da1a-4952-80b2-c0b28efffae6/collection/46880393-3875d515-def6-4b25-b83a-d3ebae9dabc5?action=share&source=collection_link&creator=46880393"
+	},
+	"item": [
+		{
+			"name": "CreateAUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Validate the response data', function() {\r",
+							"const actualName = pm.iterationData.get(\"name\");\r",
+							"const actualGender = pm.iterationData.get(\"gender\");\r",
+							"const actualStatus = pm.iterationData.get(\"status\");\r",
+							"\r",
+							"const jsonData = pm.response.json();\r",
+							"console.log(jsonData.name);\r",
+							"pm.expect(actualName).to.eql(jsonData.name);\r",
+							"console.log(jsonData.gender);\r",
+							"pm.expect(actualGender).to.eql(jsonData.gender);\r",
+							"console.log(jsonData.status);\r",
+							"pm.expect(actualStatus).to.eql(jsonData.status);\r",
+							"\r",
+							"\r",
+							"const requestData = pm.request.body.raw;\r",
+							"const JSONRequest = JSON.parse(requestData);\r",
+							"console.log(JSONRequest.email);\r",
+							"pm.expect(JSONRequest.email).to.eql(jsonData.email);\r",
+							"\r",
+							"const userID = jsonData.id;\r",
+							"pm.variables.set(\"userID\", userID);\r",
+							"})\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{tokenID}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"gender\": \"{{gender}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"status\": \"{{status}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/public/v2/users",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateAUserByID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    const json = pm.response.json();\r",
+							"    pm.expect(json.status).to.eql(pm.iterationData.get(\"newStatus\"));\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{tokenID}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"{{newStatus}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/public/v2/users/{{userID}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users",
+						"{{userID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
