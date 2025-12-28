@@ -22,7 +22,7 @@ pipeline {
 
         stage('Run API Test Cases') {
             steps {
-                bat 'docker run -v ${pwd}/results:/app/results vijayalakshminirmal/datadrivenapitest2:1.0'
+                bat 'docker run -v %cd%\\results:/app/results vijayalakshminirmal/datadrivenapitest2:1.0'
             }
         }
 
