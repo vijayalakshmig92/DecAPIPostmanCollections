@@ -16,13 +16,13 @@ pipeline {
         }
         stage('Pull Docker Image') {
             steps {
-                sh 'docker pull vijayalakshminirmal/datadrivenapitest2:1.0'
+                bat 'docker pull vijayalakshminirmal/datadrivenapitest2:1.0'
             }
         }
 
         stage('Run API Test Cases') {
             steps {
-                sh 'docker run -v $(pwd)/results:/app/results vijayalakshminirmal/datadrivenapitest2:1.0'
+                bat 'docker run -v $(pwd)/results:/app/results vijayalakshminirmal/datadrivenapitest2:1.0'
             }
         }
 
