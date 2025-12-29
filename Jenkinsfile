@@ -32,12 +32,6 @@ pipeline {
             }
         }
 
-        stage('Prepare Newman Results Directory') {
-            steps {
-                bat 'mkdir newman'
-            }
-        }
-
         stage('Run API Test Cases in Parallel') {
             parallel {
 
