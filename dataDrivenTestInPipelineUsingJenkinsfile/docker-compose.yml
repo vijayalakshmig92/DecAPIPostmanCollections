@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  gorest:
+    image: vijayalakshminirmal/datadrivenapitest:1.0
+    volumes:
+      - ./results:/app/newman
+
+  booking:
+    image: vijayalakshminirmal/datadrivenapitest2:1.0
+    volumes:
+      - ./results:/app/results
