@@ -20,13 +20,13 @@ pipeline {
 
                 stage('Pull GoRest Image') {
                     steps {
-                        bat 'docker pull vijayalakshminirmal/datadrivenapitest2: 1.0'
+                        bat 'docker pull vijayalakshminirmal/datadrivenapitest2:1.0'
                     }
                 }
 
                 stage('Pull Booking Image') {
                     steps {
-                        bat 'docker pull vijayalakshminirmal/gorestapitest: 1.0'
+                        bat 'docker pull vijayalakshminirmal/gorestapitest:1.0'
                     }
                 }
             }
@@ -43,13 +43,13 @@ pipeline {
 
                 stage('Run Data driven Tests') {
                     steps {
-                        bat 'docker run --rm -v %cd%\\newman:/app/results vijayalakshminirmal/datadrivenapitest2: 1.0'
+                        bat 'docker run --rm -v %cd%\\newman:/app/results vijayalakshminirmal/datadrivenapitest2:1.0'
                     }
                 }
 
                 stage('Run GoRest API Tests') {
                     steps {
-                        bat 'docker run --rm -v %cd%\\newman:/app/newman vijayalakshminirmal/gorestapitest: 1.0'
+                        bat 'docker run --rm -v %cd%\\newman:/app/newman vijayalakshminirmal/gorestapitest:1.0'
                     }
                 }
             }
